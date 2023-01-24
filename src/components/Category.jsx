@@ -3,9 +3,18 @@ import { useState } from "react";
 const Category = () => {
   const [isShow,setIsShowe]=useState(false);
   const [categoryFormData,setCategoryFormData]=useState({title:"",description:""});
+  const [category,setCategory]=useState([]);
+
+const addNewCategoryHandler=(e)=>{
+  e.preventDefault()
+  setCategory([...category,{...categoryFormData, createdAt:new Date().toISOString()}])
+  setCategoryFormData({title:"", description:""})
+}
+
   const changeHandler=(e)=>{
    const{ name ,value}=e.target;
    setCategoryFormData({...categoryFormData,[name]:value})
+
   }
     return (  
     <section>
@@ -33,7 +42,7 @@ const Category = () => {
               }
                 >Cancel</button>
               <button id="add-new-category" className="flex-1 bg-slate-500 text-slate-200 rounded-xl py-2"
-               >
+              onClick={addNewCategoryHandler}>
                 Add Category</button>
             </div>
           </form>
