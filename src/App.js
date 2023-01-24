@@ -1,23 +1,20 @@
-import logo from './logo.svg';
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='bg-slate-800 min-h-screen'>
+      <div className='h-12 flex items-center justify-center gap-x-4 bg-slate-700 mb-6'>
+       <h1 className='md:text-xl text-sm font-bold text-slate-300'>
+       Inventory App using tailwind &Js
+       </h1>
+       <span className='flex items-center justify-center w-7 h-7 rounded-full
+       bg-slate-500 border-2 border-slate-300 font-bold text-slate-300'>
+        7
+       </span>
+      </div>
+    </div>
     </div>
   );
 }
