@@ -1,4 +1,8 @@
-const ProductList = ({products}) => {
+const ProductList = ({products,setProducts}) => {
+    const deleteProduct=(productId)=>{
+    const productFilterd=products.filter((p)=> p.id !== parseInt(productId))
+    setProducts(productFilterd)
+    }
     return (  
         <section>
              <h2 className="text-xl text-slate-300 font-bold mb-2">Product list</h2>
@@ -21,7 +25,9 @@ const ProductList = ({products}) => {
                     >
                         {product.quantity}
                     </span>
-                    <button className="border px-2 py-0.5 rounded-2xl border-red-400 text-red-400">
+                    <button className="border px-2 py-0.5 rounded-2xl border-red-400 text-red-400"
+                    onClick={()=>deleteProduct(product.id)}
+                    >
                         Delete
                     </button>
                    </div>

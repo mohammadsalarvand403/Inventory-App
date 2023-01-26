@@ -45,7 +45,7 @@ const addNewProduct=(e)=>{
                 </option>
                 {categories.map((Category)=>{
                   return(
-                    <option key={Category.id} value={Category.id} className="bg-slate-500 text-slate-300">
+                    <option key={Category.id} value={Category.title} className="bg-slate-500 text-slate-300">
                   {Category.title}
                 </option>
                   );
