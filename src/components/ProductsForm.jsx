@@ -1,4 +1,18 @@
+import { useState } from "react";
+
 const ProductsForm = ({categories}) => {
+  
+const [productFormData,setProductFormData]=useState({
+  title:"",
+  quantity:0,
+  category:""
+})
+const changeHandler=(e)=>{
+  const{ name ,value}=e.target;
+   setProductFormData({...productFormData,[name]:value})
+
+}
+
     return (
     <section>
          <div className="mb-6">
@@ -6,24 +20,24 @@ const ProductsForm = ({categories}) => {
         <form className="bg-slate-700 p-4 rounded-xl flex flex-col gap-y-4">
           <div>
             <label htmlFor="product-title" className="block mb-1 text-slate-400">title</label>
-            <input type="text" name="product-title" id="product-title"
+            <input type="text" name="title" id="product-title" value={productFormData.title} onChange={changeHandler}
               className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-full md:w-auto"/>
           </div>
           <div>
             <label htmlFor="product-quantity" className="block mb-1 text-slate-400">quantity</label>
             <input className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-full md:w-auto"
-              type="number" name="product-quantity" id="product-quantity"/>
+              type="number" name="quantity" id="product-quantity" value={productFormData.quantity} onChange={changeHandler}/>
           </div>
           <div>
             <label htmlFor="product-category" className="block mb-1 text-slate-400">category</label>
-            <select name="product-category" id="product-category"
+            <select name="category" id="product-category" value={productFormData.category} onChange={changeHandler}
               className="bg-transparent text-slate-400 rounded-xl w-full">
                  <option  value="" className="bg-slate-500 text-slate-300">
                   select a category
                 </option>
                 {categories.map((Category)=>{
                   return(
-                    <option key={Category.id} value="" className="bg-slate-500 text-slate-300">
+                    <option key={Category.id} value={Category.id} className="bg-slate-500 text-slate-300">
                   {Category.title}
                 </option>
                   );
