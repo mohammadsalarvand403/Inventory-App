@@ -1,16 +1,24 @@
 import { useState } from "react";
 
 const ProductsForm = ({categories}) => {
-  
+  const [product,setProduct]=useState([])
 const [productFormData,setProductFormData]=useState({
   title:"",
   quantity:0,
-  category:""
+  categoryId:""
 })
 const changeHandler=(e)=>{
   const{ name ,value}=e.target;
    setProductFormData({...productFormData,[name]:value})
 
+}
+const addNewProduct=(e)=>{
+  e.preventDefault();
+  const newProduct={...productFormData, createdAt:new Date().toISOString(),
+  id: new Date().getTime()
+  }
+  setProduct((prevState)=>[...prevState,newProduct])
+  setProductFormData({title:"", categoryId:"",quantity:0})
 }
 
     return (
@@ -30,7 +38,7 @@ const changeHandler=(e)=>{
           </div>
           <div>
             <label htmlFor="product-category" className="block mb-1 text-slate-400">category</label>
-            <select name="category" id="product-category" value={productFormData.category} onChange={changeHandler}
+            <select name="category" id="product-category" value={productFormData.categoryId} onChange={changeHandler}
               className="bg-transparent text-slate-400 rounded-xl w-full">
                  <option  value="" className="bg-slate-500 text-slate-300">
                   select a category
@@ -45,8 +53,13 @@ const changeHandler=(e)=>{
             </select>
           </div>
           <div className="flex items-center justify-between gap-x-4">
-            <button id="add-new-product" className="flex-1 bg-slate-500 text-slate-200 rounded-xl py-2">Add new
-              Product</button>
+            <button 
+            onClick={addNewProduct}
+            id="add-new-product" 
+            className="flex-1 bg-slate-500 text-slate-200 rounded-xl py-2"
+            >
+            Add newProduct
+            </button>
           </div>
         </form>
       </div>
