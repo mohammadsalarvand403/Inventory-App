@@ -41,6 +41,30 @@ return array.filter((p)=> p.title.toLowerCase().includes(searchValue));
       }
     })
   }
+  useEffect(()=>{
+    const savedProducts=JSON.parse(localStorage.getItem("products")) ||[];
+    const savedCategories=JSON.parse(localStorage.getItem("categories"))||[];
+    setCategories(savedCategories)
+    setProducts(savedProducts)
+  },[])
+
+useEffect(()=>{
+ if(products.length){
+  localStorage.setItem("products",JSON.stringify(products))
+ }
+},[products]);
+
+
+useEffect(()=>{
+  if(categories.length){
+    localStorage.setItem("categories",JSON.stringify(categories))
+  }
+},[categories])
+
+
+
+
+
   return (
     <div className="">
        <div className='bg-slate-800 min-h-screen'>
