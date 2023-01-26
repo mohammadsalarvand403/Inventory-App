@@ -1,13 +1,16 @@
 import { useState } from "react";
 
-const Category = () => {
+const CategoryForm = ({setCategories}) => {
   const [isShow,setIsShowe]=useState(false);
   const [categoryFormData,setCategoryFormData]=useState({title:"",description:""});
-  const [category,setCategory]=useState([]);
+  
 
 const addNewCategoryHandler=(e)=>{
-  e.preventDefault()
-  setCategory([...category,{...categoryFormData, createdAt:new Date().toISOString()}])
+  e.preventDefault();
+  const newCategory={...categoryFormData, createdAt:new Date().toISOString(),
+  id: new Date().getTime()
+  }
+  setCategories((prevState)=>[...prevState,newCategory])
   setCategoryFormData({title:"", description:""})
 }
 
@@ -53,4 +56,4 @@ const addNewCategoryHandler=(e)=>{
       );
 }
  
-export default Category;
+export default CategoryForm;
