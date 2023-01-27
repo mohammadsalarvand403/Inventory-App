@@ -1,4 +1,10 @@
-const ProductList = ({products,setProducts}) => {
+const ProductList = ({products,setProducts,categories}) => {
+
+   const findCategory =(categoryId)=>{
+    return categories.find((c)=> c.id === parseInt(categoryId)).title;
+   }
+
+
     const deleteProduct=(productId)=>{
     const productFilterd=products.filter((p)=> p.id !== parseInt(productId))
     setProducts(productFilterd)
@@ -9,7 +15,7 @@ const ProductList = ({products,setProducts}) => {
                 {
                 products.map(product=>{
                 return(
-                <div key={product} className="flex items-center justify-between mb-2 w-full min-w-[400]">
+                <div key={product.id} className="flex items-center justify-between mb-2 w-full min-w-[400]">
                    <span className="text-slate-400 ">{product.title}</span>
                    <div className="flex items-center gap-x-3">
                     <span className="text-slate-400">
@@ -18,7 +24,7 @@ const ProductList = ({products,setProducts}) => {
                     <span className="block px-3 py-0.5 text-slate-400 border border-slate-400
                     text-sm rounded-2xl"
                     >
-                        {product.categoryId}
+                        {findCategory(product.categoryId)}
                     </span>
                     <span className="block px-3 py-0.5 text-slate-400 border border-slate-400
                     text-sm rounded-2xl"

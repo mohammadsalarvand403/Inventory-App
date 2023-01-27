@@ -34,18 +34,23 @@ const addNewProduct=(e)=>{
           <div>
             <label htmlFor="product-quantity" className="block mb-1 text-slate-400">quantity</label>
             <input className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-full md:w-auto"
-              type="number" name="quantity" id="product-quantity" value={productFormData.quantity} onChange={changeHandler}/>
+              type="number" name="quantity" id="product-quantity"
+               value={productFormData.quantity} 
+               onChange={changeHandler}/>
           </div>
           <div>
             <label htmlFor="product-category" className="block mb-1 text-slate-400">category</label>
-            <select name="categoryId" id="product-category" value={productFormData.categoryId} onChange={changeHandler}
+            <select name="categoryId" id="product-category" 
+            value={productFormData.categoryId}
+             onChange={changeHandler}
               className="bg-transparent text-slate-400 rounded-xl w-full">
                  <option  value="" className="bg-slate-500 text-slate-300">
                   select a category
                 </option>
                 {categories.map((Category)=>{
                   return(
-                    <option key={Category.id} value={Category.title} className="bg-slate-500 text-slate-300">
+                    <option key={Category.id} 
+                    value={Category.id} className="bg-slate-500 text-slate-300">
                   {Category.title}
                 </option>
                   );
